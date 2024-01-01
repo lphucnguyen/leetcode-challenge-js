@@ -11,6 +11,22 @@
 // Explanation: The answer is "wke", with the length of 3.
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
+// Solution: Sliding Window
+// - create a variable longestString and set it to 0
+// - create a variable left and right and set them to 0
+// - create a set
+// - loop while right is smaller than s.length
+//   - if set doesn't have s[right]
+//     - add s[right] to set
+//     - set longestString to Math.max(longestString, set.size)
+//     - increment right by 1
+//   - otherwise
+//     - delete s[left] from set
+//     - increment left by 1
+// - return longestString
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
 var lengthOfLongestSubstring = function(s) {
     let longestString = 0;
     let left = right = 0;
@@ -30,5 +46,5 @@ var lengthOfLongestSubstring = function(s) {
     return longestString;
 };
 
-// console.log(lengthOfLongestSubstring('abcabcbb'));
+console.log(lengthOfLongestSubstring('abcabcbb'));
 console.log(lengthOfLongestSubstring('pwwkew'));

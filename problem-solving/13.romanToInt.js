@@ -10,9 +10,31 @@
 // M             1000
 
 // Example 1:
+// Input: s = "III"
+// Output: 3
+// Explanation: III = 3.
+
+// Example 2:
+// Input: s = "LVIII"
+// Output: 58
+// Explanation: L = 50, V= 5, III = 3.
+
+// Example 3:
 // Input: s = "MCMXCIV"
 // Output: 1994
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+// Solution: One Pass
+// - create a variable result
+// - create a variable roman
+// - loop through s
+//   - if roman[s[i]] is smaller than roman[s[i+1]]
+//     - subtract roman[s[i]] from result
+//   - otherwise
+//     - add roman[s[i]] to result
+// - return result
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 
 var romanToInt = function(s) {
     const roman = {

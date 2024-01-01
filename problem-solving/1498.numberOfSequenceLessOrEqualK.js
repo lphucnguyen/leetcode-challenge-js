@@ -1,6 +1,46 @@
 // You are given an array of integers nums and an integer target.
 // Return the number of non-empty subsequences of nums such that the sum of the minimum and maximum element on it is less or equal to target.
-// Since the answer may be too large, return it modulo 109 + 7.
+// Since the answer may be too large, return it modulo 10^9 + 7.
+
+// Example 1:
+// Input: nums = [3,5,6,7], target = 9
+// Output: 4
+// Explanation: There are 4 subsequences that satisfy the condition.
+// [3] -> Min value + max value <= target (3 + 3 <= 9)
+// [3,5] -> (3 + 5 <= 9)
+// [3,5,6] -> (3 + 6 <= 9)
+// [3,6] -> (3 + 6 <= 9)
+
+// Example 2:
+// Input: nums = [3,3,6,8], target = 10
+// Output: 6
+// Explanation: There are 6 subsequences that satisfy the condition. (nums can have repeated numbers).
+// [3] , [3] , [3,3], [3,6] , [3,6] , [3,3,6]
+
+// Example 3:
+// Input: nums = [2,3,3,4,6,7], target = 12
+// Output: 61
+// Explanation: There are 63 non-empty subsequences, two of them do not satisfy the condition ([6,7], [7]).
+// Number of valid subsequences (63 - 2 = 61).
+
+// Solution: Two Pointers
+// Number of subsequence = 2 ^ n
+// - sort nums in ascending order
+// - create left pointer = 0, right pointer = nums.length - 1
+// - create count = 0, num = 1
+// - create an array powerOfTwo
+//   - loop through nums
+//     - push num to powerOfTwo
+//     - num = num * 2 % mod
+// - loop while left <= right
+//   - if nums[left] + nums[right] > target
+//     - decrement right by 1
+//   - otherwise
+//     - add powerOfTwo[right - left] to count
+//     - increment left by 1
+// - return count % mod
+// - Time Complexity: O(nlogn)
+// - Space Complexity: O(n)
 
 var numSubseq = function(nums, target) {
     // Sort the array from smallest to largest

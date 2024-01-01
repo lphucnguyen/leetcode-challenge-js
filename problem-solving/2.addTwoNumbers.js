@@ -6,6 +6,18 @@
 // Output: [7,0,8]
 // Explanation: 342 + 465 = 807.
 
+// Solution: Recursion
+// - create a function calculate (l1, l2, carry)
+//   - if l1 and l2 and carry are all null, return null
+//   - let val1 be l1?.val || 0
+//   - let val2 be l2?.val || 0
+//   - let sum be val1 + val2 + carry
+//   - let nextNode be calculate(l1?.next, l2?.next, Math.floor(sum/10))
+//   - return new ListNode(sum%10, nextNode)
+// - return calculate(l1, l2, 0)
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
