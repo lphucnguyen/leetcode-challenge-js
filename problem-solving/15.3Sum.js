@@ -46,10 +46,14 @@ var threeSum = function(nums) {
     const results = [];
     nums = nums.sort((a, b) => a - b);
 
+    // Notice that the solution set must not contain duplicate triplets.
+    // So we need skip duplicate values
+
     for (let i = 0; i < nums.length - 2; i++) {
         let j = i + 1;
         let k = nums.length - 1;
 
+        // Skip duplicate values of the first number
         if (i > 0 && nums[i] === nums[i-1]) continue;
 
         while (j < k) {
@@ -60,7 +64,9 @@ var threeSum = function(nums) {
                 j++;
             }else {
                 results.push([nums[i], nums[j], nums[k]]);
-                while (nums[j] === nums[j+1]) j++;
+                // Skip duplicate values of the second number
+                while (nums[j] === nums[j+1]) j++; 
+                // Skip duplicate values of the third number
                 while (nums[k] === nums[k-1]) k--;
                 j++;
                 k--;
