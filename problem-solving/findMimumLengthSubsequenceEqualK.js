@@ -30,4 +30,5 @@ function minSub(array, target) {
 
 // console.log(minSub([4, 10, 14], 14));
 // console.log(minSub([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0], 8));
-console.log(minSub([5, 1, 5, 10 , 9], 17));
+// console.log(minSub([5, 1, 5, 10 , 9], 17));
+console.log(minSub([5, 2, 1, 2], 4));
