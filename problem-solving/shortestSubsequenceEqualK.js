@@ -59,5 +59,5 @@ let K = 4;
 let arr = [5, 2, 1, 4];
 
 // Function call
-console.log(seqLengthByDP(arr, K));
-console.log(seqLengthByRecursive(arr, K));
+console.log(seqLengthByDP(arr, K)); // 2
+console.log(seqLengthByRecursive(arr, K)); // 2
