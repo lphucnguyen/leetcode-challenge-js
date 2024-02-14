@@ -35,7 +35,7 @@ var multiply = function(num1, num2) {
         for (let j = num2.length - 1;j >= 0; j--) {
             result[i+j+1] += parseInt(num1[i]) * parseInt(num2[j]);
             result[i+j] += Math.floor(result[i+j+1] / 10);
-            result[i + j + 1] %= 10;
+            result[i+j+1] %= 10;
         }
     }
 

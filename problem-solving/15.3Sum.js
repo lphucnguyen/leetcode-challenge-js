@@ -39,7 +39,7 @@
 //       - decrement pointer3
 // - return results
 // Time Complexity: O(n^2)
-// Space Complexity: O(1)
+// Space Complexity: O(n)
 
 
 var threeSum = function(nums) {
@@ -65,7 +65,7 @@ var threeSum = function(nums) {
             }else {
                 results.push([nums[i], nums[j], nums[k]]);
                 // Skip duplicate values of the second number
-                while (nums[j] === nums[j+1]) j++; 
+                while (nums[j] === nums[j+1]) j++;
                 // Skip duplicate values of the third number
                 while (nums[k] === nums[k-1]) k--;
                 j++;
