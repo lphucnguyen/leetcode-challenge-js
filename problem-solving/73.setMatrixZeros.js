@@ -18,6 +18,7 @@
 // - Space complexity is O(1)
 
 var setZeroes = function(matrix) {
+    // Solution 1:
     // Create a hash table to store the rows and columns that contain 0
     const hashTableColumns = new Set();
     const hashTableRows = new Set();
@@ -40,6 +41,29 @@ var setZeroes = function(matrix) {
             }
         }
     }
+
+    return matrix;
+
+
+    // Solution 2:
+    // const rows = matrix.length;
+    // const cols = matrix[0].length;
+    // const zeroPosition = [];
+
+    // for (let row = 0; row < rows; row++) {
+    //     for (let col = 0; col < cols; col++) {
+    //         if (matrix[row][col] === 0) {
+    //             zeroPosition.push([row, col]);
+    //         }
+    //     }
+    // }
+
+    // for (const [row, col] of zeroPosition) {
+    //     for (let i = 0; i < rows; i++) matrix[i][col] = 0;
+    //     for (let i = 0; i < cols; i++) matrix[row][i] = 0;
+    // }
+
+    // return matrix;
 };
 
 console.log(setZeroes([[1,1,1],[1,0,1],[1,1,1]])); // [[1,0,1],[0,0,0],[1,0,1]]

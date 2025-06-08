@@ -107,6 +107,27 @@ var sortColors = function(nums) {
         // console.log(nums);
         // console.log("Left:" + left + ", Right:" + right + ", i:" + i);
     }
+
+    // Solution 2: Hashtable + Sorting
+    // TC: O(n)
+    // SC: O(1)
+    const count = {0: 0, 1: 0, 2: 0};
+
+    for (const num of nums) {
+        count[num]++;
+    }
+
+    let index = 0;
+    for (let i = 0; i < 3; i++) {
+        const freq = count[i];
+
+        for (let j = 0; j < freq; j++) {
+            nums[index] = i;
+            index++;
+        }
+    }
+
+    return nums;
 };
 
 console.log(sortColors([2,0,2,1,1,0])); // [0,0,1,1,2,2]
