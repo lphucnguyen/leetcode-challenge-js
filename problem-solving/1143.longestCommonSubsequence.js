@@ -32,22 +32,47 @@
 
 
 var longestCommonSubsequence = function(text1, text2) {
-    const n1 = text1.length;
-    const n2 = text2.length;
-    let dp = new Array(n1+1).fill(0).map(() => new Array(n2+1).fill(0));
+    // const n1 = text1.length;
+    // const n2 = text2.length;
+    // let dp = new Array(n1+1).fill(0).map(() => new Array(n2+1).fill(0));
 
-    for (let i = 1; i <= n1; i++) {
-        for (let j = 1; j <= n2; j++) {
-            // If the letters are the same, add 1 to the previous diagonal value
-            if (text1[i - 1] === text2[j - 1]) {
-                // Add 1 to the previous diagonal value
-                dp[i][j] = dp[i-1][j-1] + 1;
-            } else {
-                // If the letters are not the same, take the max of the previous row or column
-                dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
-            }
+    // for (let i = 1; i <= n1; i++) {
+    //     for (let j = 1; j <= n2; j++) {
+    //         // If the letters are the same, add 1 to the previous diagonal value
+    //         if (text1[i - 1] === text2[j - 1]) {
+    //             // Add 1 to the previous diagonal value
+    //             dp[i][j] = dp[i-1][j-1] + 1;
+    //         } else {
+    //             // If the letters are not the same, take the max of the previous row or column
+    //             dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+    //         }
+    //     }
+    // }
+
+    // return dp[n1][n2];
+
+    const memo = new Map();
+
+    const countSame = (index1, index2) => {
+        if (index1 >= text1.length || index2 >= text2.length) {
+            return 0;
         }
+
+        const key = `${index1}-${index2}`;
+        if (memo.has(key)) {
+            return memo.get(key);
+        }
+
+        let max = 0;
+        if (text1[index1] === text2[index2]) {
+            max = 1 + countSame(index1 + 1, index2 + 1);
+        } else {
+            max = Math.max(countSame(index1 + 1, index2), countSame(index1, index2 + 1));
+        }
+
+        memo.set(key, max);
+        return max;
     }
 
-    return dp[n1][n2];
+    return countSame(0, 0);
 };
